@@ -3,10 +3,9 @@ var Nav = require('Nav');
 
 var Main = (props) => {
      return (
-        <div>
-        <Nav/>
-        <h2>Main Component</h2>
-        {props.children}
+        <div className="grid-x">
+            <div className="cell"><Nav/></div>
+            <div className="cell small-6 align-center mt2">{props.children}</div>
         </div>
     );
 }

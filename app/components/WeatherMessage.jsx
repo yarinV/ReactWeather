@@ -1,8 +1,20 @@
 var React = require('react');
 
-var WeatherMessage = ({location, temp}) => {
+var WeatherMessage = ({isLoading, location, temp, errorMessage}) => {
     return (
-        <h3>It's {temp} in {location}</h3>
+        <div className="weather-message">
+            {isLoading && 
+                <h3>Fetching weather...</h3>
+            }
+
+            {!!location && !!temp &&
+                <h3>It's {temp} celsius in {location} right now</h3>
+            }
+
+            {!!errorMessage &&
+                <h3 className="error">{errorMessage}</h3>
+            }
+        </div>
     ) 
 }
 

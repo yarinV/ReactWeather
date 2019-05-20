@@ -10,6 +10,10 @@ var Examples = require('Examples');
 require('style!css!foundation-sites/dist/foundation.min.css');
 $(document).foundation();
 
+require('style!css!MainStyle');
+require('style!css!NavStyle');
+require('style!css!WeatherFormStyle');
+require('style!css!WeatherMessageStyle');
 ReactDOM.render(
     <Router history={hashHistory}>
         <Route path="/" component={Main}>

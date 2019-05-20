@@ -1,0 +1,2 @@
+.weather-message h3{font-size: 1em;    font-weight: bold;}
+.weather-message h3.error{color: red; text-transform: capitalize;}

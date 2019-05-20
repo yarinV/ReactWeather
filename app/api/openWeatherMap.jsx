@@ -16,7 +16,7 @@ module.exports = {
             }
             
         }, function (res) {
-            throw new Error(res.message);
+            throw new Error(res.response.data.message);
         });
 
     }
