@@ -11,7 +11,7 @@ var WeatherForm = React.createClass({
             <div className="weather-form">
                 <form onSubmit={this.onFormSubmit}>
                     <div className="grid-container">
-                    <label>Type city
+                    <label>Type the name of your city:
                         <input type="text" ref="location" className="location"/>
                     </label>
                     <button type="submit" className="success button">Get Weather</button>

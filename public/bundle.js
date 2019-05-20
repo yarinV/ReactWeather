@@ -105,7 +105,7 @@
 
 	var Main = __webpack_require__(228);
 	var Weather = __webpack_require__(230);
-	var About = __webpack_require__(260);
+	var DailyForecast = __webpack_require__(260);
 	var Examples = __webpack_require__(261);
 
 	// Load foundation
@@ -122,7 +122,7 @@
 	    React.createElement(
 	        Route,
 	        { path: '/', component: Main },
-	        React.createElement(Route, { path: 'about', component: About }),
+	        React.createElement(Route, { path: 'daily-forecast', component: DailyForecast }),
 	        React.createElement(Route, { path: 'examples', component: Examples }),
 	        React.createElement(IndexRoute, { component: Weather })
 	    )
@@ -25528,7 +25528,7 @@
 	                React.createElement(
 	                    IndexLink,
 	                    { to: '/', activeClassName: 'is-active' },
-	                    'Get Weather'
+	                    'Get weather'
 	                )
 	            ),
 	            React.createElement(
@@ -25536,17 +25536,8 @@
 	                null,
 	                React.createElement(
 	                    Link,
-	                    { to: 'about', activeClassName: 'is-active' },
-	                    'About'
-	                )
-	            ),
-	            React.createElement(
-	                'li',
-	                null,
-	                React.createElement(
-	                    Link,
-	                    { to: 'examples', activeClassName: 'is-active' },
-	                    'Examples'
+	                    { to: 'daily-forecast', activeClassName: 'is-active' },
+	                    'Daily Forecast'
 	                )
 	            )
 	        )
@@ -25574,19 +25565,20 @@
 	        };
 	    },
 	    handleSearch: function handleSearch(location) {
+	        var that = this;
 	        if (!location) {
-	            this.setState({ empty: true });
+	            that.setState({ empty: true });
 	            return;
 	        }
-	        this.setState({ isLoading: true });
+	        that.setState({ isLoading: true });
 	        openWeatherMap.getTemp(location).then(function (temp) {
-	            this.setState({
+	            that.setState({
 	                location: location,
 	                temp: temp,
 	                isLoading: false
 	            });
 	        }, function (data) {
-	            this.setState({
+	            that.setState({
 	                errorMessage: data.message,
 	                isLoading: false
 	            });
@@ -25608,6 +25600,8 @@
 	                return React.createElement(WeatherMessage, { location: location, temp: temp });
 	            } else if (errorMessage) {
 	                return React.createElement(WeatherMessage, { errorMessage: errorMessage });
+	            } else if (empty) {
+	                return React.createElement(WeatherMessage, { empty: empty });
 	            }
 	        }
 	        return React.createElement(
@@ -25650,7 +25644,7 @@
 	                    React.createElement(
 	                        "label",
 	                        null,
-	                        "Type city",
+	                        "Type the name of your city:",
 	                        React.createElement("input", { type: "text", ref: "location", className: "location" })
 	                    ),
 	                    React.createElement(
@@ -25678,12 +25672,13 @@
 	    var isLoading = _ref.isLoading,
 	        location = _ref.location,
 	        temp = _ref.temp,
-	        errorMessage = _ref.errorMessage;
+	        errorMessage = _ref.errorMessage,
+	        empty = _ref.empty;
 
 	    return React.createElement(
 	        "div",
 	        { className: "weather-message" },
-	        isLoading && React.createElement(
+	        !!isLoading && React.createElement(
 	            "h3",
 	            null,
 	            "Fetching weather..."
@@ -25701,6 +25696,11 @@
 	            "h3",
 	            { className: "error" },
 	            errorMessage
+	        ),
+	        !!empty && React.createElement(
+	            "h3",
+	            null,
+	            "Please type in a city"
 	        )
 	    );
 	};
@@ -27276,7 +27276,7 @@
 	    return React.createElement(
 	        'h3',
 	        null,
-	        ' About Component '
+	        ' daily forecast Component '
 	    );
 	};
 
@@ -27772,7 +27772,7 @@
 
 
 	// module
-	exports.push([module.id, ".weather-form .location{}", ""]);
+	exports.push([module.id, ".weather-form label{text-align: left;}", ""]);
 
 	// exports
 

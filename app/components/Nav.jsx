@@ -5,9 +5,8 @@ var Nav = (props) => {
    return (
        <div className="menu-centered">
             <ul className="menu"> 
-                <li><IndexLink to="/" activeClassName="is-active">Get Weather</IndexLink></li>
-                <li><Link to="about" activeClassName="is-active">About</Link></li>
-                <li><Link to="examples" activeClassName="is-active">Examples</Link></li>
+                <li><IndexLink to="/" activeClassName="is-active">Get weather</IndexLink></li>
+                <li><Link to="daily-forecast" activeClassName="is-active">Daily Forecast</Link></li>
             </ul>
         </div>
     ); 
